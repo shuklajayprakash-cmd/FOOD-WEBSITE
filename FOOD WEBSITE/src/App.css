@@ -133,3 +133,23 @@ color:white;
 text-align:center;
 padding:20px;
 }
+
+.customer-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 40px 0;
+}
+
+.customer-box input {
+  width: 250px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.customer-box button {
+  padding: 12px 20px;
+  cursor: pointer;
+}
