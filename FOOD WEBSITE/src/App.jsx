@@ -10,7 +10,7 @@ import Hero from  "./components/Hero";
 import FoodCard from "./components/FoodCard";
 import About from "./components/About";
 import Footer from "./components/Footer";
- import { supabase } from "./supabase";
+ import { supabase } from "./Supabase.js";
  
  
 function App() {
