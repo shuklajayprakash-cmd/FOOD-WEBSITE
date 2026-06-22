@@ -1,16 +1,35 @@
-  function Navbar() {
-  return (
-    <nav className="navbar">
-      <h2>🍔 FoodieHub</h2>
+import { Link } from "react-router-dom";
 
-      <ul>
-        <li>Home</li>
-        <li>Menu</li>
-        <li>About</li>
-        <li>Contact</li>
-      </ul>
-    </nav>
-  );
+function Navbar() {
+
+return (
+<nav className="navbar">
+
+<h2>🍔 FoodieHub</h2>
+
+<ul>
+
+<li>
+<Link to="/">Home</Link>
+</li>
+
+<li>
+<Link to="/menu">Menu</Link>
+</li>
+
+<li>
+<Link to="/about">About</Link>
+</li>
+
+<li>
+<Link to="/contact">Contact</Link>
+</li>
+
+</ul>
+
+</nav>
+)
+
 }
 
 export default Navbar;

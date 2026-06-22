@@ -1,14 +1,17 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Navbar  from "./components/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./components/Home";
+import Menu from "./components/Menu";
+import Contact from "./components/Contact";
 import Hero from  "./components/Hero";
 import FoodCard from "./components/FoodCard";
 import About from "./components/About";
 import Footer from "./components/Footer";
  import { supabase } from "./supabase";
  
-
-import "./App.css";
  
 function App() {
   
@@ -27,12 +30,15 @@ const [names, setNames] = useState([]);
   setName("");
 }
 
-   async function fetchName() {
-   const {data} =  await supabase.from('Product').select("*")
+  async function fetchName() {
+
+const {data} = await supabase
+.from('Product')
+.select("*")
+
 setNames(data)
-   setName("")
-   
-  }
+
+}
 
     async function deleteName(id){
   
@@ -44,39 +50,24 @@ setNames(data)
   },[])
 
 
-  return (
-    <>
-      <Navbar />
+ return (
+<BrowserRouter>
 
-      <Hero />
+<Navbar />
 
-      <section className="foods">
-        <h2>Featured Dishes</h2>
+<Routes>
 
-        <div className="food-grid">
-          <FoodCard
-            title="Burger"
-            price="₹149"
-            image="https://images.unsplash.com/photo-1568901346375-23c9450c58cd"
-          />
+<Route path="/" element={<Home />} />
 
-          <FoodCard
-            title="Pizza"
-            price="₹299"
-            image="https://images.unsplash.com/photo-1513104890138-7c749659a591"
-          />
+<Route path="/menu" element={<Menu />} />
 
-          <FoodCard
-            title="Pasta"
-            price="₹199"
-            image="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9"
-          />
- 
-        </div>
-      </section>
+<Route path="/about" element={<About />} />
 
-      
-    <div className="customer-box">
+<Route path="/contact" element={<Contact />} />
+
+</Routes>
+
+<div className="customer-box">
 
       <input 
   placeholder="Enter Customer Name"
@@ -104,13 +95,12 @@ setNames(data)
       ))}
 
     </div>
+ 
 
+<Footer />
 
-      <About />
-
-      <Footer />
-    </>
-  );
+ </BrowserRouter>
+ );
 }
 
 export default App;
